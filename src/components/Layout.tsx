@@ -13,6 +13,7 @@ export default function ({ children }: PropsWithChildren<{}>) {
           <div>
             <Link to="/lunch">급식 정보</Link>
             <Link to="/timetable">시간표</Link>
+            <Link to="/scinfo">학교 기본 정보</Link>
           </div>
         </Navbar>
       </header>
