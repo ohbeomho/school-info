@@ -7,7 +7,9 @@ export default function ({ children }: PropsWithChildren<{}>) {
     <Wrapper>
       <header>
         <Navbar>
-          <Link to="/" className="brand">School Info</Link>
+          <Link to="/" className="brand">
+            School Info
+          </Link>
           <div>
             <Link to="/lunch">급식 정보</Link>
             <Link to="/timetable">시간표</Link>
@@ -36,6 +38,7 @@ const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
 
   & .brand {

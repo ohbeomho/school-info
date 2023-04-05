@@ -107,7 +107,15 @@ export default function () {
   return (
     <>
       <h1>학교 시간표 알아보기</h1>
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 20 }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 20,
+          flexWrap: "wrap"
+        }}
+      >
         {school ? (
           <div>
             <span>선택된 학교: {school.SCHUL_NM}</span>
@@ -139,7 +147,15 @@ export default function () {
             <option value="high">고등학교</option>
           </Select>
           <br />
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 20 }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 20,
+              flexWrap: "wrap"
+            }}
+          >
             <div>
               <div>학년</div>
               <Input

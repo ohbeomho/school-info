@@ -47,7 +47,15 @@ export default function () {
   return (
     <>
       <h1>학교 급식 알아보기</h1>
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 20 }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 20,
+          flexWrap: "wrap"
+        }}
+      >
         {school ? (
           <div>
             <span>선택된 학교: {school.SCHUL_NM}</span>
