@@ -53,7 +53,8 @@ export default function () {
           justifyContent: "center",
           alignItems: "center",
           gap: 20,
-          flexWrap: "wrap"
+          flexWrap: "wrap",
+          maxWidth: "90vw"
         }}
       >
         {school ? (
