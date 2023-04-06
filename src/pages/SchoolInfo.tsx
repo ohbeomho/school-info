@@ -8,9 +8,7 @@ export default function () {
   const dateString = school?.FOAS_MEMRD;
   const formatted =
     dateString &&
-    dateString.substring(0, 4) +
-      dateString.substring(4, 6) +
-      dateString.substring(6);
+    dateString.substring(0, 4) + "-" + dateString.substring(4, 6) + "-" + dateString.substring(6);
 
   return (
     <>
@@ -26,7 +24,8 @@ export default function () {
           </div>
           <div>학교 종류: {school.SCHUL_KND_SC_NM}</div>
           <div>전화번호: {school.ORG_TELLNO || "데이터 없음"}</div>
-          <div>홈페이지: {school.HMPG_ADDRESS || "데이터 없음"}</div>
+          <div>팩스번호: {school.ORG_FAXNO || "데이터 없음"}</div>
+          <div>홈페이지: {school.HMPG_ADRES || "데이터 없음"}</div>
           <div>개교기념일: {formatted}</div>
           <p>
             <Button onClick={() => setSchool(undefined)}>학교 다시 선택</Button>
