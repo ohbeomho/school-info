@@ -213,9 +213,6 @@ export default function () {
         ) : timetable === "" ? (
           <span>
             {school.SCHUL_NM}의 {timetableDate}에는 수업이 없습니다.
-            {[0, 6].includes(new Date(timetableDate).getDay()) && (
-              <div style={{ margin: "10px auto" }}>(토~일요일)</div>
-            )}
           </span>
         ) : !school ? (
           <span>학교를 먼저 선택해 주세요.</span>
