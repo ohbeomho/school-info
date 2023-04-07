@@ -13,7 +13,12 @@ class Timetable {
   fetchURL: string;
 
   constructor(schoolType: SchoolTypes, apiKey: string) {
-    const s = schoolType === "elementary" ? "els" : schoolType === "middle" ? "mis" : "his";
+    const s =
+      schoolType === "elementary"
+        ? "els"
+        : schoolType === "middle"
+        ? "mis"
+        : "his";
     this.fetchURL = `https://open.neis.go.kr/hub/${s}Timetable?KEY=${apiKey}&Type=json&pIndex=1&pSize=100`;
   }
 
@@ -32,7 +37,7 @@ class Timetable {
         this.fetchURL +
           `&ATPT_OFCDC_SC_CODE=${scCode}&SD_SCHUL_CODE=${schoolCode}&GRADE=${grade}&CLASS_NM=${classNum}&ALL_TI_YMD=${dateString}`,
         {
-          signal
+          signal,
         }
       )
         .then((res) => res.json())
@@ -70,7 +75,12 @@ export default function () {
       controller.signal
     )
       .then((data) => {
-        const s = schoolType === "elementary" ? "els" : schoolType === "middle" ? "mis" : "his";
+        const s =
+          schoolType === "elementary"
+            ? "els"
+            : schoolType === "middle"
+            ? "mis"
+            : "his";
         if (!data[s + "Timetable"]) {
           setTimetable(undefined);
           return;
@@ -80,7 +90,9 @@ export default function () {
         setTimetable(
           list.map((v: any) => ({
             PERIO: v.PERIO,
-            ITRT_CNTNT: v.ITRT_CNTNT.startsWith("-") ? v.ITRT_CNTNT.substring(1) : v.ITRT_CNTNT
+            ITRT_CNTNT: v.ITRT_CNTNT.startsWith("-")
+              ? v.ITRT_CNTNT.substring(1)
+              : v.ITRT_CNTNT,
           }))
         );
       })
@@ -114,7 +126,7 @@ export default function () {
           alignItems: "center",
           gap: 20,
           flexWrap: "wrap",
-          maxWidth: "90vw"
+          maxWidth: "90vw",
         }}
       >
         {school ? (
@@ -142,7 +154,10 @@ export default function () {
         </div>
         <div>
           <div>학교</div>
-          <Select onChange={(e) => setSchoolType(e.target.value as SchoolTypes)} value={schoolType}>
+          <Select
+            onChange={(e) => setSchoolType(e.target.value as SchoolTypes)}
+            value={schoolType}
+          >
             <option value="elementary">초등학교</option>
             <option value="middle">중학교</option>
             <option value="high">고등학교</option>
@@ -155,7 +170,7 @@ export default function () {
               alignItems: "center",
               gap: 20,
               flexWrap: "wrap",
-              maxWidth: "90vw"
+              maxWidth: "90vw",
             }}
           >
             <div>
@@ -198,6 +213,9 @@ export default function () {
         ) : timetable === "" ? (
           <span>
             {school.SCHUL_NM}의 {timetableDate}에는 수업이 없습니다.
+            {[0, 6].includes(new Date(timetableDate).getDay()) && (
+              <div style={{ margin: "10px auto" }}>(토~일요일)</div>
+            )}
           </span>
         ) : !school ? (
           <span>학교를 먼저 선택해 주세요.</span>

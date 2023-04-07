@@ -24,18 +24,22 @@ export default function () {
     fetch(
       `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${
         config.API_KEY
-      }&Type=json&ATPT_OFCDC_SC_CODE=${school.ATPT_OFCDC_SC_CODE}&SD_SCHUL_CODE=${
-        school.SD_SCHUL_CODE
-      }&MLSV_YMD=${lunchDate.split("-").join("")}&pIndex=1&pSize=10`,
+      }&Type=json&ATPT_OFCDC_SC_CODE=${
+        school.ATPT_OFCDC_SC_CODE
+      }&SD_SCHUL_CODE=${school.SD_SCHUL_CODE}&MLSV_YMD=${lunchDate
+        .split("-")
+        .join("")}&pIndex=1&pSize=10`,
       {
-        signal: controller.signal
+        signal: controller.signal,
       }
     )
       .then((res) => res.json())
       .then((data) =>
         setLunch(
           data.mealServiceDietInfo
-            ? data.mealServiceDietInfo[1].row[0].DDISH_NM.split("<br/>").join("\n")
+            ? data.mealServiceDietInfo[1].row[0].DDISH_NM.split("<br/>").join(
+                "\n"
+              )
             : ""
         )
       )
@@ -54,7 +58,7 @@ export default function () {
           alignItems: "center",
           gap: 20,
           flexWrap: "wrap",
-          maxWidth: "90vw"
+          maxWidth: "90vw",
         }}
       >
         {school ? (
@@ -90,6 +94,9 @@ export default function () {
         ) : lunch === "" ? (
           <span>
             {school.SCHUL_NM}의 {lunchDate}에는 급식이 없습니다.
+            {[0, 6].includes(new Date(lunchDate).getDay()) && (
+              <div style={{ margin: "10px auto" }}>(토~일요일)</div>
+            )}
           </span>
         ) : !school ? (
           <span>학교를 먼저 선택해 주세요.</span>
