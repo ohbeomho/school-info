@@ -19,9 +19,8 @@ export default function ({ children }: PropsWithChildren<{}>) {
       </header>
       <Main>{children}</Main>
       <Footer>
-        <p>&copy; 2023. OhBeomho. All rights reserved.</p>
         <p>
-          Source on <a href="https://github.com/OhBeomho/school-info">GitHub</a>.
+          Source on <a href="https://github.com/ohbeomho/school-info">GitHub</a>.
         </p>
       </Footer>
     </Wrapper>
